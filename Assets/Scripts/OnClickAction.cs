@@ -21,9 +21,9 @@ public class OnClickAction : MonoBehaviour
 	private RaycastHit _hit;
 	private float _divideChancePercent = 100f;
 
-	public void SetSeparateChance(float separateChance)
+	public void SetDivideChance(float divideChance)
 	{
-		_divideChancePercent = separateChance;
+		_divideChancePercent = divideChance;
 	}
 
 	private void Update()
@@ -75,7 +75,7 @@ public class OnClickAction : MonoBehaviour
 
 			rb.AddTorque(startTorque, ForceMode.Impulse);
 			rb.AddForce(explosionForce, ForceMode.Impulse);
-			clone.GetComponent<OnClickAction>().SetSeparateChance(_divideChancePercent / _divideChanceDivisor);
+			clone.GetComponent<OnClickAction>().SetDivideChance(_divideChancePercent / _divideChanceDivisor);
 		}
 	}
 
