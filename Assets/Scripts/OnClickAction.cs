@@ -9,13 +9,13 @@ public class OnClickAction : MonoBehaviour
 	[SerializeField] private GameObject _poolFolder;
 
 	[SerializeField] private float _explosionForceMultiplier = 20f;
-	[SerializeField] private float _explosionRadius = 2f;
+	[SerializeField] private float _explosionRadius = 10f;
 	[SerializeField] private float _scaleMultiplier = 0.5f;
 	[SerializeField] private float _divideChanceDivisor = 2f;
 
-	[SerializeField] private float[] _newCubesAmountRange = new float[2] { 0.2f, 1 };
+	[SerializeField] private float[] _newCubesAmountRange = new float[2] { 2, 10 };
 	[SerializeField] private float[] _positionOffsetRange = new float[2] { -0.5f, 0.5f };
-	[SerializeField] private float[] _startTorqueRange = new float[2] { -300, 300 };
+	[SerializeField] private float[] _startTorqueRange = new float[2] { -150, 150 };
 
 	private Ray _ray;
 	private RaycastHit _hit;
