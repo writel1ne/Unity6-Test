@@ -22,8 +22,8 @@ public class Spawner : MonoBehaviour
 
 		if (cubeData.GetDivideChance() >= Random.Range(0f, 100f))
 		{
-			int newCubesAmount = (int)Random.Range(_newCubesAmountRange.Min(), _newCubesAmountRange.Max());
 			GameObject clone;
+			int newCubesAmount = (int)Random.Range(_newCubesAmountRange.Min(), _newCubesAmountRange.Max());
 
 			for (int i = 0; i < newCubesAmount; i++)
 			{

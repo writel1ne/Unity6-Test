@@ -7,13 +7,11 @@ public class Input : MonoBehaviour
 	private RaycastHit _hit;
 	private Camera _camera;
 	private Spawner _spawner;
-	private Exploder _exploder;
 
 	private void Start()
 	{
 		_camera = GetComponent<Camera>();
 		_spawner = GetComponent<Spawner>();
-		_exploder = GetComponent<Exploder>();
 	}
 
 	void Update()
