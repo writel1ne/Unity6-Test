@@ -17,7 +17,7 @@ public class Input : MonoBehaviour
 	}
 
 	void Update()
-    {
+	{
 		if (UnityEngine.Input.GetMouseButtonDown(0))
 		{
 			_ray = _camera.ScreenPointToRay(UnityEngine.Input.mousePosition);

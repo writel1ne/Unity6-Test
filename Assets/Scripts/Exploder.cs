@@ -18,7 +18,7 @@ public class Exploder : MonoBehaviour
 	{
 		_spawner.OnSpawn += ExecuteExplode;
 	}
-	
+
 	private void OnDisable()
 	{
 		_spawner.OnSpawn -= ExecuteExplode;
