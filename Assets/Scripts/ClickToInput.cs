@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public class Input : MonoBehaviour
+public class ClickToInput : MonoBehaviour
 {
-
 	private Ray _ray;
-	private RaycastHit _hit;
 	private Camera _camera;
 	private Spawner _spawner;
 
@@ -14,19 +12,20 @@ public class Input : MonoBehaviour
 		_spawner = GetComponent<Spawner>();
 	}
 
-	void Update()
+	private void Update()
 	{
-		if (UnityEngine.Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))
 		{
-			_ray = _camera.ScreenPointToRay(UnityEngine.Input.mousePosition);
+			_ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-			if (Physics.Raycast(_ray, out _hit, Mathf.Infinity))
+			if (Physics.Raycast(_ray, out RaycastHit _hit, Mathf.Infinity) && _hit.transform.gameObject.TryGetComponent(out CubeData cubeData))
 			{
 				GameObject hitedObject = _hit.rigidbody.gameObject;
 				_spawner.TrySpawnNewCubes(hitedObject);
 			}
 		}
 	}
+
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawRay(_ray.origin, _ray.direction * 100);

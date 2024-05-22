@@ -1,5 +1,8 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+
+[RequireComponent(typeof(Spawner))]
 
 public class Exploder : MonoBehaviour
 {
@@ -7,15 +10,15 @@ public class Exploder : MonoBehaviour
 	[SerializeField] private float _maxExplosionRadius = 15f;
 
 	private Spawner _spawner;
+	private WaitForFixedUpdate _waitForUpdate = new WaitForFixedUpdate();
+	public void ExecuteExplode(GameObject hitedCube)
+	{
+		StartCoroutine(ExplodeFrom(hitedCube));
+	}
 
 	private void Start()
 	{
-		_spawner = GetComponent<Spawner>();
-		_spawner.OnSpawn += ExecuteExplode;
-	}
-
-	private void OnEnable()
-	{
+		TryGetComponent(out Spawner _spawner);
 		_spawner.OnSpawn += ExecuteExplode;
 	}
 
@@ -24,14 +27,9 @@ public class Exploder : MonoBehaviour
 		_spawner.OnSpawn -= ExecuteExplode;
 	}
 
-	public void ExecuteExplode(GameObject hitedCube)
+	private IEnumerator ExplodeFrom(GameObject hitedCube)
 	{
-		StartCoroutine(ExplodeFrom(hitedCube));
-	}
-
-	IEnumerator ExplodeFrom(GameObject hitedCube)
-	{
-		yield return new WaitForFixedUpdate();
+		yield return _waitForUpdate;
 
 		float explosionForce = _maxExplosionForce - (_maxExplosionForce * hitedCube.transform.lossyScale.x);
 		float explosionRadius = _maxExplosionRadius - (_maxExplosionRadius * hitedCube.transform.lossyScale.x);
