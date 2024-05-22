@@ -1,3 +1,3 @@
 using UnityEngine;
 
-public class PoolHolder : MonoBehaviour{}
+public class PoolHolder : MonoBehaviour { }
